@@ -7,6 +7,11 @@ Pascal's triangle module
 def pascal_triangle(n):
     """
     An implementation of pascal's triangle
+
+    - Start with the first row
+    - Implement each row by 1
+    - Each new element is the sum of the two elements above it
+    - Last element of each row is 1
     """
     if n <= 0:
         return []
