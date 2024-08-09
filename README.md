@@ -4,3 +4,4 @@
 3. [Minimum Operations](https://github.com/fred-mba/alx-interview/tree/main/0x02-minimum_operations)
 4. [Log parsing](https://github.com/fred-mba/alx-interview/tree/main/0x03-log_parsing)
 5. [N Queens](https://github.com/fred-mba/alx-interview/tree/main/0x05-nqueens)
+6. [Star Wars Api](https://github.com/fred-mba/alx-interview/blob/main/0x06-starwars_api/0-starwars_characters.js)
