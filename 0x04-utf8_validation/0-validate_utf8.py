@@ -13,8 +13,7 @@ def validUTF8(data):
     mask1 = 1 << 7
     mask2 = 1 << 6
     for num in data:
-        if num > 255:  # Reject any number outside the range of a valid type
-            return False
+        num &= 0xFF  # Mask the number to get the lowest 8 bits
 
         mask = 1 << 7
         if number_bytes == 0:
