@@ -31,17 +31,13 @@
 - 3-byte character: '1110xxxx 10xxxxxx 10xxxxxx'. The 1st byte starts with '1110', and the next two bytes start with '10'
 - 4-byte character: '11110xxx 10xxxxxx 10xxxxxx 10xxxxxx'
 
-***Why validate?**
+**Why validate?**
 - By validating data, you ensure that the text is correctly formatted and safe to use.
 
-[!NOTE]
-- Values greater than 255 aren't valid single-byte values in UTF-8. To handle an exceeding value (like 467), you need to first consider the lower 8 bits of the value. In this case:
-- '467' in binary is '111010011' which is a 9 bit number
-- We need to apply the '0xFF' mask, which ensure that only the least significant 8 bits and ignores any higher bits.
-- Performing '467 & 0xFF' takes only the last bits of '467', thus:
+> [!NOTE]
+> Values greater than 255 aren't valid single-byte values in UTF-8. To handle an exceeding value (like 467), you need to first consider the lower 8 bits of the value. In this case:
+> '467' in binary is '111010011' which is a 9 bit number
+> We need to apply the '0xFF' mask, which ensure that only the least significant 8 bits and ignores any higher bits.
+> Performing '467 & 0xFF' takes only the last bits of '467', thus:
 
-Bitwise AND:
-
-111010011 (467)
-& 11111111 (0xFF)
-11010011 (211)
+> 111010011 (467) & 11111111 (0xFF) = 11010011 (211)
