@@ -23,3 +23,4 @@ $ sudo npm install semistandard --global
 $ sudo npm install request --global
 $ export NODE_PATH=/usr/lib/node_modules
 ```
+7. [UTF-8 Validation](https://github.com/fred-mba/alx-interview/tree/main/0x04-utf8_validation)
