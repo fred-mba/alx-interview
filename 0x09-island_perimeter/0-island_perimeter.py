@@ -26,21 +26,16 @@ def island_perimeter(grid):
     """
     perimeter = 0
 
-    height = len(grid[0])
-    length = len(grid)
-    for col in range(height):
-        for row in range(length):
-            if grid[row][col] == 1:
-                # Top
-                if row == 0 or grid[row-1][col] == 0:
-                    perimeter += 1
-                # Bottom
-                if row == height-1 or grid[row+1][col] == 0:
-                    perimeter += 1
-                # Left
-                if col == 0 or grid[row][col-1] == 0:
-                    perimeter += 1
-                # right
-                if col == length-1 or grid[row][col+1] == 0:
-                    perimeter += 1
+    rows = len(grid)
+    cols = len(grid[0])
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == 1:
+                perimeter += 4
+            # Top is a land
+                if r > 0 and grid[r-1][c] == 1:
+                    perimeter -= 2
+            # Left is a land
+                if c > 0 and grid[r][c-1] == 1:
+                    perimeter -= 2
     return perimeter
