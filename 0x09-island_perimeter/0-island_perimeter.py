@@ -9,8 +9,7 @@ def island_perimeter(grid):
        - grid: is rectangular with its width and height not exceeding 100
        - Each cell is square, with a side length of 1
        - Cells are connected horizontally/vertically (not diagonally)
-                     6
-        ____________________________
+        ____________6_______________
        |                            |
        |     __1__                  |
        |     |   |                  |
