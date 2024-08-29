@@ -34,3 +34,11 @@
 4. YouTube Tutorials:
 
 - [Python 2D arrays and lists](https://www.youtube.com/watch?feature=shared&v=aNzepGawwCI)
+
+### Explanation
+- You need to calculate the perimeter by checking the neighbors of each land cell
+1. perimeter = 0
+2. Check top: If the current cell is at the top row (i == 0) or the cell above is water (grid[i-1][j] == 0), perimeter += 1
+3. Check bottom: If the current cell is at the bottom row (i == rows-1) or the cell below is water (grid[i+1][j] == 0), perimeter += 1.
+4. Check left: If the current cell is at the leftmost column (j == 0) or the cell to the left is water (grid[i][j-1] == 0), perimeter +=1.
+5. Check right: If the current cell is at the rightmost column (j == cols-1) or the cell to the right is water (grid[i][j+1] == 0), perimeter += 1
