@@ -4,48 +4,62 @@ The Prime Game
 """
 
 
-def sieve_of_eratosthenes(max_num):
-    """Returns a list of booleans representing whether numbers are prime up to
-    max_num
+def findMultiples(num, targets):
     """
-    is_prime = [True] * (max_num + 1)
-    is_prime[0] = is_prime[1] = False
-    for p in range(2, int(max_num**0.5) + 1):
-        if is_prime[p]:
-            for multiple in range(p * p, max_num + 1, p):
-                is_prime[multiple] = False
-    return is_prime
-
-
-def count_primes_up_to_n(is_prime, n):
-    """Count primes up to n and return the number of primes
+    Find multiples of a given number within a list
     """
-    count = 0
-    remaining = list(range(1, n + 1))
+    for i in targets:
+        if i % num == 0:
+            targets.remove(i)
+    return targets
 
-    for i in range(2, n + 1):
-        if is_prime[i]:
-            count += 1
-            # Remove multiples of the prime i
-            remaining = [x for x in remaining if x % i != 0]
-    return count
+
+def isPrime(i):
+    """
+    Check if a number is prime
+    """
+    if i == 1:
+        return False
+    for j in range(2, i):
+        if i % j == 0:
+            return False
+    return True
+
+
+def findPrimes(n):
+    """
+    Sort a given set into prime numbers and non-prime numbers
+    """
+    counter = 0
+    target = list(n)
+    for i in range(1, len(target) + 1):
+        if isPrime(i):
+            counter += 1
+            target.remove(i)
+            target = findMultiples(i, target)
+        else:
+            pass
+    return counter
 
 
 def isWinner(x, nums):
-    """Return the name of the player that won the most rounds
+    """Return: name of the player that won the most rounds
     """
-    max_n = max(nums)
-    # Precompute prime information for all numbers up to max_n
-    is_prime = sieve_of_eratosthenes(max_n)
-
     players = {'Maria': 0, 'Ben': 0}
+    cluster = set()
+    for elem in range(x):
+        nums.sort()
+        num = nums[elem]
+        for i in range(1, num + 1):
+            cluster.add(i)
+            if i == num + 1:
+                break
+        temp = findPrimes(cluster)
 
-    for num in nums:
-        prime_count = count_primes_up_to_n(is_prime, num)
-        if prime_count % 2 == 1:
-            players['Maria'] += 1
-        else:
+        if temp % 2 == 0:
             players['Ben'] += 1
+        elif temp % 2 != 0:
+            players['Maria'] += 1
 
     if players['Maria'] > players['Ben']:
         return 'Maria'
